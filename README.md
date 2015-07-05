@@ -9,7 +9,7 @@ You also better use the package manager [bower](https://github.com/bower/bower),
 Nothing eccentric in the global architecture. It is divided in two main folders :
 
 * `/src` for your working files: this is where you will work
-* `/web` for your brower : this is where your files are compiled and used for rendering into browser. Your host should point into this folder. This folder is "gitignored" but you will be able to see it when you make your first compilations
+* `/web` for your browser : this is where your files are compiled and used for rendering into browser. Your host should point into this folder. This folder is "gitignored" but you will be able to see it when you make your first compilations
 
 There is no special architecture into `/src/js` & `/src/img` do as you want !.
 
