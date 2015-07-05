@@ -25,7 +25,6 @@ In order to kick things off, you have to prepare the dev with the following comm
 
 ```
 $ npm run make-dev
-
 ```
 
 This command will install your node modules & bower dependencies plus compile and copy all the pre-existing code into the `/src` folder.
@@ -35,7 +34,6 @@ Then when you are ready to go, enter the following command for watch changes int
 
 ```
 $ npm run start-dev
-
 ```
 
 ###Style commands
@@ -43,7 +41,6 @@ You want to create a new style brick ? Alright then gain some time with this com
 
 ```
 $ gulp create:style:brick --name yourBrickName
-
 ```
 
 This will simply creates `.scss` file into the folders `/src/scss/bricks` & `/src/scss/parameters` as a partial (this means, it will create a file named `_yourBrickName.scss`) and automaticaly include it into the `/src/scss/bricks/bricks.scss` & `/src/scss/parameters/parameters.scss` style files. It will also create a partial template file at the path `/src/templates/bricks` and include it into the `src/templates/bricks/bricks.twig` file.
