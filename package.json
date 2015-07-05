@@ -1,0 +1,27 @@
+{
+  "name": "front-lab",
+  "version": "1.0.0",
+  "description": "",
+  "main": "web/index.html",
+  "scripts": {
+    "make-dev": "npm install && bower install && gulp compile",
+    "start-dev": "gulp watch-dev"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-autoprefixer": "^2.3.0",
+    "gulp-csslint": "^0.1.5",
+    "gulp-csso": "^1.0.0",
+    "gulp-jshint": "^1.11.0",
+    "gulp-livereload": "^3.8.0",
+    "gulp-sass": "^2.0.1",
+    "gulp-util": "^3.0.6",
+    "jshint-stylish": "^2.0.0"
+  },
+  "dependencies": {
+    "gulp-dest": "^0.2.2",
+    "gulp-twig": "^0.3.0"
+  }
+}
