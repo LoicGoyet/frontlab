@@ -1,0 +1,11 @@
+{
+  "name": "Front Lab",
+  "authors": [
+    "Loic Goyet <loic@appventus.com>"
+  ],
+  "ignore": [
+    "src/bower_components",
+    "web"
+  ],
+  "dependencies": {}
+}
