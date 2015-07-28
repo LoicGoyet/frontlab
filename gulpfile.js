@@ -30,7 +30,6 @@ gulp.task('watch-dev', function() {
     gulp.watch('src/templates/**/*.twig', ['build-template']);
     gulp.watch('src/js/**/*.js', ['build-javascript']);
     gulp.watch('src/img/**/*', ['build-images']);
-    gulp.watch('src/bower_components/**/*', ['copy-bowercomponents']);
 });
 
 gulp.task('compile', [
@@ -42,8 +41,7 @@ gulp.task('compile', [
     'build-style-parameters',
     'build-template',
     'build-javascript',
-    'build-images',
-    'copy-bowercomponents'
+    'build-images'
  ], function() {});
 
 
