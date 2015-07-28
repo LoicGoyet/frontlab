@@ -8,6 +8,7 @@ var gulp  = require('gulp'),
     csso = require('gulp-csso'),
     jshint = require('gulp-jshint'),
     twig = require('gulp-twig'),
+    bower = require('gulp-bower'),
     gutil = require('gulp-util'),
     fs = require('fs');
 
@@ -103,11 +104,10 @@ gulp.task('build-images', function() {
         .pipe(livereload());
 });
 
-// bower components
-gulp.task('copy-bowercomponents', function() {
-    return gulp.src('src/bower_components/**/*')
-        .pipe(gulp.dest('web/bower_components'))
-        .pipe(livereload());
+// bower
+gulp.task('bower', function() {
+  return bower()
+    .pipe(gulp.dest('web/bower_components'))
 });
 
 

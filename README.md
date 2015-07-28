@@ -48,10 +48,10 @@ This will simply creates `.scss` file into the folders `/src/scss/bricks` & `/sr
 `$ gulp create:style:layout --name yourLayout` also exist for generating style files as for the bricks but into the `/src/scss/layout` & `/src/scss/parameters` folders.
 
 ###Bower command
-As you can check for yourself, `.bowerrc` install bower dependencies into the `/src/bower_components` folder. But it could be convenient for the browser to have access to thoses dependencies. So in order to copy the `/src/bower_components` folder at `/web/bower_components` just it the following command :
+In order to be install bower dependencies into `/src` & `/web` folders in the same time, you have to complete the dependencies into `bower.json` file and then run the following gulp task !
 
 ```
-$ gulp copy-bowercomponents
+$ gulp bower
 ```
 
 ##What's next
