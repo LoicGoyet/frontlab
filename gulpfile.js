@@ -23,7 +23,7 @@ var AUTOPREFIXER_BROWSERS = [
 // Install bower components on `/src` and `/web` folders
 gulp.task('bower', function() {
   return $.bower()
-    .pipe(gulp.dest(config.bower.dest))
+    .pipe(gulp.dest(config.bower.dest));
 });
 
 // Optimize images
