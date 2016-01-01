@@ -7,5 +7,7 @@
     "src/bower_components",
     "web"
   ],
-  "dependencies": {}
+  "dependencies": {
+    "normalize-css": "normalize.css#~3.0.3"
+  }
 }

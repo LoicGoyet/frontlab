@@ -27,9 +27,10 @@ module.exports = function() {
             watch: 'src/fonts/**/*'
         },
         sass: {
-            src: 'src/style/style.scss',
+            src: 'src/style/main.scss',
             dest: 'web',
-            watch: 'src/style/**/*.{scss,css}'
+            watch: 'src/style/**/*.{scss,css}',
+            root: 'src/style'
         },
         html: {
             src: 'web/**/*.html',
@@ -38,7 +39,8 @@ module.exports = function() {
         twig: {
             src: 'src/templates/*.twig',
             dest: 'web',
-            watch: 'src/templates/**/*.twig'
+            watch: 'src/templates/**/*.twig',
+            root: 'src/templates'
         },
         js: {
             watch: 'src/**/*.js'
