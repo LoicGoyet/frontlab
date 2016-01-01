@@ -105,7 +105,7 @@ gulp.task('serve', ['styles'], function () {
   browserSync({
     notify: false,
     // Customize the BrowserSync console logging prefix
-    logPrefix: 'EP Guidelines',
+    logPrefix: 'Front Lab',
     // Run as an https by uncommenting 'https: true'
     // Note: this uses an unsigned certificate which on first access
     //       will present a certificate warning in the browser.
@@ -129,35 +129,29 @@ gulp.task('default', ['clean'], function (cb) {
 // Generator
 // =========
 
-gulp.task('create:style:brick', function() {
-    $.util.log('creating brick : ' + ($.util.env.name ? $.util.env.name : 'pod'));
+/*
+ * Return intro for style partial
+ */
+function styleCommentIntro(name, section) {
+    return '// -----------------------------------------------------------------------------\n'+
+           '// This file contains all style related to the ' + name + ' ' + section + '.\n'+
+           '// -----------------------------------------------------------------------------\n';
+}
 
-    // Style
-    string_src("_" + $.util.env.name + ".scss", "// " + $.util.env.name + '\n')
-        .pipe(gulp.dest('src/style/bricks')).pipe(gulp.dest('src/style/parameters'));
-        fs.appendFile('src/style/bricks/bricks.scss', '\n@import \'' + $.util.env.name + '\';\n');
-        fs.appendFile('src/style/parameters/parameters.scss', '\n@import \'' + $.util.env.name + '\';\n');
+/*
+ * Return intro for template partial
+ */
+function templateCommentIntro(name) {
+    return '<div id="' + name + '">\n'+
+           '    <div class="container">\n'+
+           '        <h3>' + name + '</h3>\n'+
+           '    </div>\n'+
+           '</div>';
+}
 
-    // Template
-    string_src("_" + $.util.env.name + ".twig", "<div id=\"" + $.util.env.name + "\">\n    <div class=\"container\">\n        <h3>" + $.util.env.name + "</h3>\n    </div>\n</div>")
-        .pipe(gulp.dest('src/templates/bricks'));
-    fs.appendFile('src/templates/bricks/bricks.twig', '\n{% include \"_' + $.util.env.name + '.twig\" %}<hr>');
-
-    $.util.log($.util.env.name + " is created !");
-});
-
-
-gulp.task('create:style:layout', function() {
-    $.util.log('creating layout : ' + ($.util.env.name ? $.util.env.name : 'pod'));
-    string_src("_" + $.util.env.name + ".scss", "// " + $.util.env.name + "\n")
-        .pipe(gulp.dest('src/style/layouts')).pipe(gulp.dest('src/style/parameters'));
-
-    fs.appendFile('src/style/layouts/layouts.scss', '\n@import \'' + $.util.env.name + '\';\n');
-    fs.appendFile('src/style/parameters/parameters.scss', '\n@import \'' + $.util.env.name + '\';\n');
-
-    $.util.log($.util.env.name + " is created !");
-});
-
+/*
+ * Creates file
+ */
 function string_src(filename, string) {
     var src = require('stream').Readable({objectMode: true});
     src._read = function () {
@@ -166,3 +160,57 @@ function string_src(filename, string) {
     };
     return src;
 }
+
+/*
+ * Generation of files
+ */
+function guidelinesGenerator(section, template) {
+    var name = ($.util.env.name ? $.util.env.name : 'pod');
+    $.util.log('Generates the ' + section + ' "' + name + '"');
+
+    /*
+     * Creates style file
+     */
+    string_src("_" + name + ".scss", styleCommentIntro(name, section)).pipe(gulp.dest(config.sass.root + '/' + section));
+
+    /*
+     * Append to file style import
+     */
+    fs.appendFile(config.sass.root + '/' + section + '/' + section + '.scss', '@import \'' + $.util.env.name + '\';\n');
+
+    if (template) {
+        /*
+         * Creates template file
+         */
+        string_src("_" + $.util.env.name + ".twig", templateCommentIntro(name)).pipe(gulp.dest(config.twig.root + '/guidelines/' + section));
+
+        /*
+         * Append template file to library
+         */
+        fs.appendFile(config.twig.root + '/guidelines/' + section + '/' + section + '.twig', '{% include \"_' + $.util.env.name + '.twig\" %}<hr>\n');
+    }
+}
+
+gulp.task('create:style:base', function() {
+    guidelinesGenerator('base', false);
+});
+
+gulp.task('create:style:components', function() {
+    guidelinesGenerator('components', true);
+});
+
+gulp.task('create:style:layout', function() {
+    guidelinesGenerator('layout', true);
+});
+
+gulp.task('create:style:pages', function() {
+    guidelinesGenerator('pages', false);
+});
+
+gulp.task('create:style:themes', function() {
+    guidelinesGenerator('themes', false);
+});
+
+gulp.task('create:style:utils', function() {
+    guidelinesGenerator('utils', false);
+});
