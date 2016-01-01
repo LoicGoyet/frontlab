@@ -27,7 +27,7 @@ module.exports = function() {
             watch: 'src/fonts/**/*'
         },
         sass: {
-            src: 'src/style/style.scss',
+            src: 'src/style/main.scss',
             dest: 'web',
             watch: 'src/style/**/*.{scss,css}'
         },

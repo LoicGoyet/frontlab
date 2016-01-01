@@ -1,0 +1,25 @@
+@charset 'UTF-8';
+
+// 1. Configuration and helpers
+@import 'utils/utils';
+
+// 2. Vendors
+@import 'vendor/vendor';
+
+// 3. Base stuff
+@import 'base/base';
+
+// 4. Layout-related sections
+@import 'layout/layout';
+
+// 5. Components
+@import 'components/components';
+
+// 6. Page-specific styles
+@import 'pages/pages';
+
+// 7. Themes
+@import 'themes/themes';
+
+// 8. Themes
+@import 'shame';
