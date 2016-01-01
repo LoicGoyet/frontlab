@@ -17,7 +17,7 @@ There is no special architecture into `/src/js` & `/src/img` do as you want !.
 Templating is for now exclusively made with [twig](https://github.com/twigphp/Twig). The files as direct children of the folder `/src/templates` are considered as the main templates. It supposed to be pages that extends layouts and include partials.
 
 ###Style
-Style is generated with [sass](https://github.com/sass/sass) into a specific architecture called styleLeague and designed by myself. I did not create any ressources in order to allow you to dig into styleLeague, but it will come soon.
+Style is generated with [sass](https://github.com/sass/sass) into a specific architecture called based on Hugo Giraudel's [sass guidelines](http://sass-guidelin.es/#the-7-1-pattern).
 
 
 ##Getting started
@@ -37,15 +37,14 @@ $ npm run start-dev
 ```
 
 ###Style commands
-You want to create a new style brick ? Alright then gain some time with this command :
+You want to create a new style partial (base, components, layout, pages, theme, utils or vendor partial) ? Alright then gain some time with this command :
 
 ```
-$ gulp create:style:brick --name yourBrickName
+$ gulp create:style:{partial type} --name yourBrickName
+// {partial type} is base, components, layout, pages, theme, utils or vendor
 ```
 
-This will simply creates `.scss` file into the folders `/src/scss/bricks` & `/src/scss/parameters` as a partial (this means, it will create a file named `_yourBrickName.scss`) and automaticaly include it into the `/src/scss/bricks/bricks.scss` & `/src/scss/parameters/parameters.scss` style files. It will also create a partial template file at the path `/src/templates/bricks` and include it into the `src/templates/bricks/bricks.twig` file.
-
-`$ gulp create:style:layout --name yourLayout` also exist for generating style files as for the bricks but into the `/src/scss/layout` & `/src/scss/parameters` folders.
+This will simply creates `.scss` file into the folders `/src/scss/{partial type}` & `/src/scss/{partial type}` as a partial and automaticaly include into the main style files. It will also create a partial template file at the path `/src/templates/guideline/{partial type}/yourBrickName`.
 
 ###Bower command
 As you can check for yourself, `.bowerrc` install bower dependencies into the `/src/bower_components` folder. But it could be convenient for the browser to have access to thoses dependencies. So in order to copy the `/src/bower_components` folder at `/web/bower_components` just it the following command :
